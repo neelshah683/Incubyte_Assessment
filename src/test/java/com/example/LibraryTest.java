@@ -62,7 +62,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void vewBooksTest(){
+    public void vewBookTest(){
         Map<String, Book> availBooks = library.viewBooks();
         assertEquals(2, availBooks.size());
         assertTrue(availBooks.containsKey("1A"));

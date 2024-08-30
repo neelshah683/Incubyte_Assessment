@@ -27,7 +27,7 @@ public class Library {
             throw new IllegalArgumentException("Book was not borrowed");
         book.setAvailable(true);
     }
-    public Map<String, Book> viewBooks(){
+    public Map<String, Book> viewBook(){
         Map<String, Book> chkAvailBooks = new HashMap<>();
         for(Book book : books.values()){
             if(book.chkAvailable())
