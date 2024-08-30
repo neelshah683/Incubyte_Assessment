@@ -3,12 +3,14 @@ package com.example;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.BeforeEach;
+
 
 public class LibraryTest {
     
     public LibraryTest library ;
 
-
+    @BeforeEach
     public void initBooks(){
         library = new LibraryTest();
         library.addBook(new Book("1A", "Introduction to JAVA", "James Gosling", 1995));
