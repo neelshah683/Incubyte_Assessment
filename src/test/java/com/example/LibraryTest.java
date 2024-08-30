@@ -6,6 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.jupiter.api.BeforeEach;
 
 
@@ -56,5 +59,14 @@ public class LibraryTest {
     @Test
     public void returnBookNotBorrowedTest(){
         assertThrows(IllegalArgumentException.class, () -> library.returnBook("1B"));
+    }
+
+    @Test
+    public void vewBooksTest(){
+        Map<String, Book> availBooks = library.viewBooks();
+        assertEquals(2, availBooks.size());
+        assertTrue(availBooks.containsKey("1A"));
+        assertTrue(availBooks.containsKey("1B"));
+
     }
 }
