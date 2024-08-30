@@ -6,5 +6,5 @@ package com.example;
  */
 public class AppTest 
 {
-   
+   //init configuration
 }
