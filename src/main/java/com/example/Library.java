@@ -27,12 +27,12 @@ public class Library {
             throw new IllegalArgumentException("Book was not borrowed");
         book.setAvailable(true);
     }
-    public Map<String, Book> viewBook(){
-        Map<String, Book> chkAvailBooks = new HashMap<>();
+    public Map<String, Book> viewBooks(){
+        Map<String, Book> chkAvailBook = new HashMap<>();
         for(Book book : books.values()){
             if(book.chkAvailable())
-                chkAvailBooks.put(book.fetchIsbn(), book);
+                chkAvailBook.put(book.fetchIsbn(), book);
         }
-        return chkAvailBooks;
+        return chkAvailBook;
     }
 }
