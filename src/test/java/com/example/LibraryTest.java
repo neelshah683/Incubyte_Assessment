@@ -9,11 +9,23 @@ import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
 
+/*
+ * Test Cases Generation Class
+ * TDD: Test Driven Development
+ * 1. FAIL TEST CASE
+ * 2. WRITE ENOUGH CODE TO PASS IT
+ * 3. REFACTOR CODE
+ * 4. REPEAT
+ */
 
 public class LibraryTest {
     
     public Library library ;
     private Book book1, book2;
+
+
+    //Resetting the state & Avoid code duplication
+    //Each test case start with a fresh consistent state
 
     @BeforeEach
     public void init(){
@@ -27,6 +39,8 @@ public class LibraryTest {
         library.addBook(book2);
     }
 
+    //Adding Books Test Cases to library
+
     @Test
     public void addBookTest(){
         Book book3 = new Book("1C", "Introduction to C++", "Bjarne Stroustrup", 1979);
@@ -35,17 +49,23 @@ public class LibraryTest {
         assertEquals(3, library.viewBooks().size());
     }
 
+    //Borrowing Books Test Cases from library
+
     @Test
     public void borrowBookTest(){
         library.borrowBook("1A");
         assertFalse(library.viewBooks().containsKey("1A"));
     }
 
+    //Borrowing Books Not Available Test Cases from library
+
     @Test
     public void borrowBookNotAvailableTest(){
         library.borrowBook("1A");
         assertThrows(IllegalArgumentException.class, () -> library.borrowBook("1A"));
     }
+
+    //Returning Books Test Cases to library
 
     @Test
     public void returnBookTest(){
@@ -54,10 +74,14 @@ public class LibraryTest {
         assertTrue(library.viewBooks().containsKey("1A"));
     }
 
+    //Returning Books Not Borrowed Test Case from library
+
     @Test
     public void returnBookNotBorrowedTest(){
         assertThrows(IllegalArgumentException.class, () -> library.returnBook("1B"));
     }
+
+    //Viewing Available Books Test Case from library
 
     @Test
     public void vewBooksTest(){
