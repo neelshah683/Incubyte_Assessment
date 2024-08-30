@@ -8,11 +8,11 @@ import org.junit.jupiter.api.BeforeEach;
 
 public class LibraryTest {
     
-    public LibraryTest library ;
+    public Library library ;
 
     @BeforeEach
     public void initBooks(){
-        library = new LibraryTest();
+        library = new Library();
         library.addBook(new Book("1A", "Introduction to JAVA", "James Gosling", 1995));
         library.addBook(new Book("1B", "Introduction to Python", "Van Rossum", 1991));
 
