@@ -41,7 +41,7 @@ public class Library {
         book.setAvailable(true);
     }
 
-    //Method to fetch or view all the available books
+    //Method to fetch or view all of the available books
     public Map<String, Book> viewBooks() {
         Map<String, Book> chkAvailBook = new HashMap<>();
 
