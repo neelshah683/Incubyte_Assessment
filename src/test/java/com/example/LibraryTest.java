@@ -52,4 +52,9 @@ public class LibraryTest {
         library.returnBook("1A");
         assertTrue(library.viewBooks().containsKey("1A"));
     }
+
+    @Test
+    public void returnBookNotBorrowedTest(){
+        assertThrows(IllegalArgumentException.class, () -> library.returnBook("1B"));
+    }
 }

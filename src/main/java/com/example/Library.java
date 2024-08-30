@@ -23,7 +23,7 @@ public class Library {
 
     public void returnBook(String isbn){
         Book book = books.get(isbn);
-        if(book == null || !book.chkAvailable())
+        if(book == null || book.chkAvailable())
             throw new IllegalArgumentException("Book was not borrowed");
         book.setAvailable(true);
     }
