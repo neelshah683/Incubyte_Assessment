@@ -11,6 +11,7 @@ public class Book {
         this.title = title;
         this.author = author;
         this.publicationYear = pubYear;
+        this.isAvailable = true;
     }
 
     public String fetchIsbn(){
