@@ -2,6 +2,9 @@ package com.example;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 
@@ -22,11 +25,31 @@ public class LibraryTest {
         library.addBook(book1);
         library.addBook(book2);
     }
+
     @Test
     public void addBookTest(){
         Book book3 = new Book("1C", "Introduction to C++", "Bjarne Stroustrup", 1979);
         library.addBook(book3);
-        
+
         assertEquals(3, library.viewBooks().size());
+    }
+
+    @Test
+    public void borrowBookTest(){
+        library.borrowBook("1A");
+        assertFalse(library.viewBooks().containsKey("1A"));
+    }
+
+    @Test
+    public void borrowBookNotAvailableTest(){
+        library.borrowBook("1A");
+        assertThrows(IllegalArgumentException.class, () -> library.borrowBook("1A"));
+    }
+
+    @Test
+    public void returnBookTest(){
+        library.borrowBook("1A");
+        library.returnBook("1A");
+        assertTrue(library.viewBooks().containsKey("1A"));
     }
 }

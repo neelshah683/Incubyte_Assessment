@@ -9,10 +9,24 @@ public class Library {
     public Library(){
         this.books = new HashMap<>();
     }
+
     public void addBook(Book book){
         books.put(book.fetchIsbn(), book);
     }
 
+    public void borrowBook(String isbn){
+        Book book = books.get(isbn);
+        if(book == null || !book.chkAvailable())
+            throw new IllegalArgumentException("Book is not available.");
+        book.setAvailable(false);
+    }
+
+    public void returnBook(String isbn){
+        Book book = books.get(isbn);
+        if(book == null || !book.chkAvailable())
+            throw new IllegalArgumentException("Book was not borrowed");
+        book.setAvailable(true);
+    }
     public Map<String, Book> viewBooks(){
         Map<String, Book> chkAvailBooks = new HashMap<>();
         for(Book book : books.values()){
