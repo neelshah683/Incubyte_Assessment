@@ -18,6 +18,9 @@ public class Library {
 
     //Method to add a book to the library
     public void addBook(Book book) {
+        if (books.containsKey(book.fetchIsbn())) {
+            throw new IllegalArgumentException("Book with this ISBN already exists");
+        }
         books.put(book.fetchIsbn(), book);
     }
 

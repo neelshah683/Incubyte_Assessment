@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.beans.Transient;
 import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -47,6 +49,16 @@ public class LibraryTest {
         library.addBook(book3);
 
         assertEquals(3, library.viewBooks().size());
+    }
+
+    //Adding Book Already Exist
+    @Test
+    public void addDuplicateBookTest() {
+        Book duplicateBook = new Book("1A", "Another Java Book", "Author", 2020);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            library.addBook(duplicateBook); // Attempting to add a book with the same ISBN as book1
+        });
+        assertEquals("Book with this ISBN already exists", exception.getMessage());
     }
 
     //Borrowing Books Test Cases from library
